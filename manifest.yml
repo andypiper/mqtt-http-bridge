@@ -1,13 +1,7 @@
---- 
-applications: 
-  .: 
-    name: test-mosquitto
-    instances: 1
-    framework: 
-      name: rack
-      info: 
-        exec: 
-        description: Rack Application
-        mem: 128M
-    url: ${name}.${target-base}
-    mem: 128M
+---
+applications:
+- name: m2m-eclipse
+  memory: 256M
+  instances: 1
+  url: m2m-eclipse.cfapps.io
+  path: .

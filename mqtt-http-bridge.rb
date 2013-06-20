@@ -12,7 +12,8 @@ require 'sinatra'
 class MqttHttpBridge < Sinatra::Base
   MQTT_TIMEOUT = 1.0
   MQTT_OPTS = {
-    :remote_host => 'test.mosquitto.org',
+    :remote_host => 'm2m.eclipse.org',
+    :remote_port => 1883,
     :keep_alive => 2,
     :clean_session => true
   }
