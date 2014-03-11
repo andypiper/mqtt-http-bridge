@@ -9,9 +9,11 @@ require 'rubygems'
 require 'mqtt'
 require 'sinatra'
 require 'psych'
+require 'sinatra/bootstrap'
 
 class MqttHttpBridge < Sinatra::Base
   enable  :logging, :show_exceptions, :raise_errors
+  register Sinatra::Bootstrap::Assets
 
   config = Psych.load_file("mqtt.yml")
   config["broker"].each { |key, value| instance_variable_set("@#{key}", value) }

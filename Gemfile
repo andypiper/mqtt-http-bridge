@@ -10,6 +10,7 @@ gem 'mqtt', :git => 'git://github.com/njh/ruby-mqtt.git'
 gem 'thin'
 gem 'psych'
 gem 'newrelic_rpm'
+gem 'sinatra-bootstrap', :require => 'sinatra/bootstrap'
 
 group :development do
   gem 'shotgun'
