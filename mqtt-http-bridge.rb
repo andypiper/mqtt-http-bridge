@@ -8,13 +8,21 @@
 require 'rubygems'
 require 'mqtt'
 require 'sinatra'
+require 'psych'
 
 class MqttHttpBridge < Sinatra::Base
+  enable  :logging, :show_exceptions, :raise_errors
+
+  config = Psych.load_file("mqtt.yml")
+  config["broker"].each { |key, value| instance_variable_set("@#{key}", value) }
+
   MQTT_TIMEOUT = 1.0
   MQTT_OPTS = {
-    :remote_host => 'test.mosquitto.org',
-    :keep_alive => 2,
-    :clean_session => true
+    :remote_host => @remote_host,
+    :remote_port => @remote_port,
+    :keep_alive => @keep_alive,
+    :clean_session => @clean_session,
+    :client_id => @client_id
   }
 
   def mqtt_get(topic)
@@ -86,6 +94,14 @@ class MqttHttpBridge < Sinatra::Base
   get // do
     content_type('text/plain')
     mqtt_get(topic)
+  end
+
+  post '/kanini' do
+    halt 400
+  end
+
+  post '/lollipoptirana' do
+    halt 400
   end
 
   post // do
