@@ -1,0 +1,8 @@
+# define MQTT broker connection information here
+
+broker:
+  remote_host: 'iot.eclipse.org'
+  remote_port: 1883
+  keep_alive: 5
+  clean_session: false
+  client_id: 'eclipse-mqttbridge2'
